@@ -8,5 +8,12 @@
 
   <p>日付: <%= aaa.date %></p>
 
+  <p>画像</p>
+  <% if aaa.image.attached? %>
+    <%= image_tag aaa.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
+
   <br>
 <% end %>

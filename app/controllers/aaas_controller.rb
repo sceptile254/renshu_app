@@ -4,9 +4,12 @@ class AaasController < ApplicationController
   end
 
   def create
-    aaa = Aaa.new(aaa_params)
-    aaa.save
-    redirect_to aaa_path(aaa.id)
+    @aaa = Aaa.new(aaa_params)
+    if @aaa.save
+      redirect_to aaa_path(@aaa.id)
+    else
+      render :new
+    end
   end
 
   def index
@@ -27,8 +30,15 @@ class AaasController < ApplicationController
     redirect_to aaa_path(aaa.id)
   end
 
+  def destroy
+    aaa = Aaa.find(params[:id]) #データを1件取得
+    aaa.destroy #上で取得したデータを削除
+    redirect_to '/sakujogo' #削除後の画面へ遷移
+  end
+
 # ストロングパラメータ
+  private
   def aaa_params
-    params.require(:aaa).permit(:title, :body, :date)
+    params.require(:aaa).permit(:title, :body, :date, :image)
   end
 end

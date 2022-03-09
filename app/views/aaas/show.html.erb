@@ -7,3 +7,13 @@
 <h2>日付</h2>
 <p><%= @aaa.date %></p>
 <%= link_to "編集画面", edit_aaa_path(@aaa.id) %>
+
+<h2>画像</h2>
+<% if @aaa.image.attached? %>
+  <%= image_tag @aaa.image, size: "300x300" %>
+<% else %>
+  <%= image_tag 'no_image', size: "300x300" %>
+<% end %>
+
+<%= link_to "編集", edit_aaa_path(@aaa.id) %>
+<%= link_to "削除", destroy_aaa_path(@aaa.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>

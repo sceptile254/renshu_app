@@ -11,6 +11,10 @@ class KonsController < ApplicationController
 
   end
 
+  def sakujogo
+
+  end
+
   def thanks
     redirect_to '/thanks2'
   end
