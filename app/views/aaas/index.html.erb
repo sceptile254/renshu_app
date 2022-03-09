@@ -1,0 +1,12 @@
+<h1>過去の投稿たち</h1>
+
+<% @aaas.each do |aaa| %>
+
+  <p><%= link_to aaa.title, aaa_path(aaa.id) %></p>
+
+  <p>内容: <%= aaa.body %></p>
+
+  <p>日付: <%= aaa.date %></p>
+
+  <br>
+<% end %>
